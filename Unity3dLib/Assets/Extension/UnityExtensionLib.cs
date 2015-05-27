@@ -15,6 +15,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using System;
 
 #if PARSE_ESCAPED_UNICODE
 using System.Text.RegularExpressions;
@@ -26,7 +27,7 @@ using UnityEngine;
 using System.Diagnostics;
 #endif
 
-namespace UnityNerve
+namespace UnityCore
 {
     public class UnityExtensionLib : MonoBehaviour
     {
@@ -66,7 +67,7 @@ namespace UnityNerve
 	double number = nestedObject.GetNumber("key");
  
  */
-namespace UnityNerve.JSON
+namespace UnityCore.JSON
 {
     public static class Extensions
     {
@@ -1024,6 +1025,24 @@ namespace UnityNerve.JSON
             {
                 values.Remove(key);
             }
+        }
+    }
+}
+
+namespace UnityCore.Matematic
+{
+    public static class Time
+    {
+        /// <summary>
+        /// Convert decimal in string Timeformat (hh:mm)
+        /// </summary>
+        /// <param name="time">Time to Decimal</param>
+        /// <returns>String</returns>
+        public static string TimeToDecimal(this decimal time)
+        {
+            string Hours = Math.Truncate(time).ToString();
+            string Minuten = Math.Round((time - Math.Truncate(time)) * 60).ToString();
+            return Hours + ":" + Minuten;
         }
     }
 }
