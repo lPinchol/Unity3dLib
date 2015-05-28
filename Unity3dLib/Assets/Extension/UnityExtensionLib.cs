@@ -1,7 +1,7 @@
 ﻿//*******************************************************
 //  Autor:          Antonio Mateo "lPinchol"
 //  Description:    Help for Unity3D
-//  Date:           12/05/2015
+//  Date:           28/05/2015
 //  GitHub:         https://github.com/lPinchol
 //******************************************************
 
@@ -17,6 +17,8 @@ using System.Globalization;
 using System.Text;
 using System;
 
+
+
 #if PARSE_ESCAPED_UNICODE
 using System.Text.RegularExpressions;
 #endif
@@ -31,6 +33,20 @@ namespace UnityCore
 {
     public class UnityExtensionLib : MonoBehaviour
     {
+        
+    }
+
+    public static class DateNow
+    {
+        /// <summary>
+        /// Return the current date and time
+        /// </summary>
+        /// <param name="source">string</param>
+        /// <returns>Date</returns>
+        public static DateTime GetCurrentDate(this object source)
+        {
+            return DateTime.Now;
+        }
     }
 }
 
@@ -1038,8 +1054,9 @@ namespace UnityCore.Matematic
         /// </summary>
         /// <param name="time">Time to Decimal</param>
         /// <returns>String</returns>
-        public static string TimeToDecimal(this decimal time)
+        public static string DecimalToTime(this decimal time)
         {
+
             string Hours = Math.Truncate(time).ToString();
             string Minuten = Math.Round((time - Math.Truncate(time)) * 60).ToString();
             return Hours + ":" + Minuten;
